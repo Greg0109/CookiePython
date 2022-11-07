@@ -100,8 +100,12 @@ dist: clean ## builds source and wheel package
 install: clean ## install the package to the active Python's site-packages
 	python setup.py install
 
-env-create:  ## creates a virtual environment
-	python3 -m venv .env
+env-create:  ## creates a virtual environment using tox
+	tox -e fred --recreate
+	@echo -e "\r\nYou can activate the environment with:\r\n\r\n$$ source ./.tox/fred/bin/activate\r\n"
 
 install-requirements:  ## install requirements
 	pip install -r requirements.txt
+
+update-version: ## updates the version in setup.cfg setup.py and __init__.py
+	bump2version --current-version $(CURRENT_VERSION) patch --allow-dirty --no-commit

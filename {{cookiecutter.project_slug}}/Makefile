@@ -101,8 +101,8 @@ install: clean ## install the package to the active Python's site-packages
 	python setup.py install
 
 env-create:  ## creates a virtual environment using tox
-	tox -e fred --recreate
-	@echo -e "\r\nYou can activate the environment with:\r\n\r\n$$ source ./.tox/fred/bin/activate\r\n"
+	tox -e {{ cookiecutter.project_slug }} --recreate
+	@echo -e "\r\nYou can activate the environment with:\r\n\r\n$$ source ./.tox/{{ cookiecutter.project_slug }}/bin/activate\r\n"
 
 install-requirements:  ## install requirements
 	pip install -r requirements.txt

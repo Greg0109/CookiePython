@@ -29,6 +29,10 @@ help:
 
 clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
 
+clean-all: clean ## Remove everything including .env
+	rm -rf .env/
+	rm -rf .tox/
+
 clean-build: ## remove build artifacts
 	rm -fr build/
 	rm -fr dist/
